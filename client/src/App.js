@@ -2,8 +2,8 @@ import React from 'react';
 import './App.css';
 
 // page imports
-import Home from "./pages/Home";
-import Login from "./pages/Login";
+import Home from "./pages/home";
+import Login from "./pages/login";
 
 // component import
 import Nav from "./components/Nav";
