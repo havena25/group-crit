@@ -1,9 +1,9 @@
 const { Schema, model } = require("mongoose");
-const commentSchema = require("./critque");
+const critiqueSchema = require("./critque");
 const mediaSchema = require("./Media");
 const dateFormat = require("../utils/dateFormat");
 
-const artSchema = new Schema(
+const ArtSchema = new Schema(
   {
     artTitle: {
       type: String,
@@ -37,7 +37,7 @@ const artSchema = new Schema(
       get: (timestamp) => dateFormat(timestamp),
     },
     media: [mediaSchema],
-    comments: [commentSchema],
+    critiques: [critiqueSchema],
   },
   {
     toJSON: {
@@ -46,8 +46,10 @@ const artSchema = new Schema(
   }
 );
 
-artSchema.virtual("commentCount").get(function () {
-  return this.comments.length;
+artSchema.virtual("critiqueCount").get(function () {
+  return this.critique.length;
 });
 
-const Art = model("Art", artSchema);
+const Art = model("Art", ArtSchema);
+
+module.exports = Art;
