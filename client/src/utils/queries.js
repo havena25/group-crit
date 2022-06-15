@@ -8,6 +8,9 @@ export const QUERY_CRITIQUES = gql`
     }
   }
 `;
+
+export const QUERY_ME = gql``;
+
 export const QUERY_ARTWORKS = gql`
   {
     artworks {
