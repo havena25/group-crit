@@ -1,5 +1,48 @@
 import gql from "graphql-tag";
 
+export const QUERY_ARTWORKS = gql`
+  query art($username: String) {
+    art(username: $username) {
+      _id
+      artTitle
+      artSummary
+      artDescription
+      artStatus
+      artStartDate
+      createdAt
+      username
+      critiqueCount
+      critiques {
+        _id
+        createdAt
+        username
+        critiqueText
+      }
+    }
+  }
+`;
+
+export const QUERY_ART = gql`
+  query art($id: ID!) {
+    art(_id: $id) {
+      _id
+      artTitle
+      artDescription
+      artStatus
+      artStartDate
+      createdAt
+      username
+      critiqueCount
+      critiques {
+        _id
+        createdAt
+        username
+        critiqueText
+      }
+    }
+  }
+`;
+
 export const QUERY_CRITIQUES = gql`
   query critiques($username: String) {
     critiques(username: $username) {
@@ -11,48 +54,70 @@ export const QUERY_CRITIQUES = gql`
   }
 `;
 
+export const QUERY_USER = gql`
+  query user($username: String!) {
+    user(username: $username) {
+      _id
+      username
+      email
+      friendCount
+      friends {
+        _id
+        username
+      }
+      art {
+        _id
+        artTitle
+        artDescription
+        artStatus
+        artStartDate
+        createdAt
+        critiqueCount
+      }
+    }
+  }
+`;
+
 export const QUERY_ME = gql`
   {
     me {
       _id
       username
       email
-      critiqueCount
-      critiques {
+      friendCount
+      art {
         _id
-        critiqueText
+        artTitle
+        artDescription
+        artStatus
+        artStartDate
         createdAt
+        critiqueCount
+        critiques {
+          _id
+          createdAt
+          critiqueText
+          username
+        }
       }
-    }
-  }
-`;
-
-export const QUERY_ARTWORKS = gql`
-  {
-    artworks {
-      _id
-      name
-      description
-      category {
-        name
-      }
-    }
-  }
-`;
-
-export const QUERY_ART = gql`
-  query art($id: ID!) {
-    art(_id: $id) {
-      _id
-      artText
-      createdAt
-      username
-      critiqueCount
-      critiques {
+      friends {
         _id
-        createdAt
         username
-        critiqueBody
+      }
+    }
+  }
+`;
+
+export const QUERY_ME_BASIC = gql`
+  {
+    me {
+      _id
+      username
+      email
+      friendCount
+      friends {
+        _id
+        username
       }
     }
   }
