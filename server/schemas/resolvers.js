@@ -31,6 +31,25 @@ const resolvers = {
       if (!user) {
         throw new AuthenticationError("Incorrect username or password");
       }
+      addComment: async (parent, args, context) => {
+        if (context.user) {
+          const comment = await Comment.create({
+            ...args,
+            username: context.user.username,
+          });
+
+          await User.findByIdAndUpdate(
+            { _id: context.user._id },
+            { $push: { comments: comment._id } },
+            { new: true }
+          );
+
+          return comment;
+        }
+
+        throw new AuthenticationError("You need to be logged in!");
+      };
+
       const correctPw = await user.isCorrectPassword(password);
       if (!correctPw) {
         throw new AuthenticationError("Incorrect username or password");
