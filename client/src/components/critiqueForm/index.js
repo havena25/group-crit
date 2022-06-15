@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
 import { ADD_CRITIQUE } from "../../utils/mutations";
-import { QUERY_CRITIQUES, QUERY_ME } from "../../utils/queries";
+import { QUERY_CRITIQUES } from "../../utils/queries";
 
 const CritiqueForm = () => {
   const [critiqueText, setText] = useState("");
@@ -20,11 +20,11 @@ const CritiqueForm = () => {
         console.error(e);
       }
 
-      const { me } = cache.readQuery({ query: QUERY_ME });
-      cache.writeQuery({
-        query: QUERY_ME,
-        data: { me: { ...me, Critique: [...me.Critique, addCritique] } },
-      });
+      // const { me } = cache.readQuery({ query: QUERY_ME });
+      // cache.writeQuery({
+      //   query: QUERY_ME,
+      //   data: { me: { ...me, Critique: [...me.Critique, addCritique] } },
+      // });
     },
   });
 
