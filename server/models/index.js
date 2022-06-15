@@ -1,5 +1,4 @@
-const User = require('./User'); 
-const Art = require('./artPiece'); 
-const Comment = require('./Comment'); 
+const User = require("./User");
+const Art = require("./artPiece");
 
-module.exports = { User, Art, Comment };
+module.exports = { User, Case };
