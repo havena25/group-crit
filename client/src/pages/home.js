@@ -2,7 +2,7 @@ import React from "react";
 
 const Home = () => {
   return (
-    <main>
+    <main className="main_wrapper">
       <div>
         <div>{/* PRINT ART LIST */}</div>
       </div>

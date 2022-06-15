@@ -1,6 +1,9 @@
 import React from "react";
 import "./App.css";
 
+// import { ApolloProvider } from "@apollo/react-hooks";
+// import ApolloClient from "apollo-boost";
+
 // page imports
 import Home from "./pages/home";
 import Login from "./pages/login";
