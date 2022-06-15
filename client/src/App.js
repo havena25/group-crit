@@ -1,24 +1,32 @@
 import React from "react";
 import "./App.css";
 
-// import { ApolloProvider } from "@apollo/react-hooks";
-// import ApolloClient from "apollo-boost";
-
-// page imports
-import Home from "./pages/home";
-import Login from "./pages/login";
+// import Apollo hooks and modules
+import { ApolloProvider } from "@apollo/react-hooks";
+import ApolloClient from "apollo-boost";
 
 // component import
-// import Nav from "./components/Nav";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
+
+// page imports
+import Home from "./pages/Home";
+
+const client = new ApolloClient({
+  uri: "/graphql",
+});
 
 function App() {
   return (
-    <div>
-      <main>
+    <ApolloProvider client={client}>
+      <div>
         <Header />
-      </main>
-    </div>
+        <div>
+          <Home />
+        </div>
+        <Footer />
+      </div>
+    </ApolloProvider>
   );
 }
 
