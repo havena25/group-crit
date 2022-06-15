@@ -18,6 +18,7 @@ import NoMatch from "./pages/noMatch";
 import SingleArt from "./pages/singleArt";
 import Signup from "./pages/signup";
 import Profile from "./pages/Profile";
+import ArtForm from './pages/artForm';
 
 const client = new ApolloClient({
   request: (operation) => {
