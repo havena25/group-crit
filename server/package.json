@@ -20,6 +20,6 @@
     "start:dev": "concurrently \"nodemon server.js --ignore 'client/*'\" \"cd .. && npm run client\"",
     "client": "cd .. && cd client && npm run start",
     "build": "cd .. && cd client && npm run build",
-    "seed": "node seeders/seeds.js"
+    "seed": "seeders/seeds.js"
   }
 }
