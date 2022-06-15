@@ -1,9 +1,9 @@
-const faker = require('faker');
+const faker = require("faker");
 
-const db = require('../config/connection');
-const { Art } = require('../models');
+const db = require("../config/connection");
+const { Art, User } = require("../models");
 
-db.once('open', async () => {
+db.once("open", async () => {
   await Art.deleteMany({});
   await User.deleteMany({});
 
@@ -28,7 +28,9 @@ db.once('open', async () => {
     let friendId = userId;
 
     while (friendId === userId) {
-      const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
+      const randomUserIndex = Math.floor(
+        Math.random() * createdUsers.ops.length
+      );
       friendId = createdUsers.ops[randomUserIndex];
     }
 
@@ -49,6 +51,6 @@ db.once('open', async () => {
   // }
   // await Art.collection.insertMany(artData);
 
-  console.log('all done!');
+  console.log("all done!");
   process.exit(0);
 });
