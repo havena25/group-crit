@@ -38,17 +38,17 @@ function App() {
       <Router>
         <div>
           <Header />
-          <div>
-            <Routes>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/signup" component={Signup} />
-              <Route exact path="/case/:id" component={SingleArt} />
-              <Route exact path="/profile" component={Profile} />
-
-              <Route component={NoMatch} />
-            </Routes>
-          </div>
+            <div>
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/signup" component={Signup} />
+                <Route exact path="/art/:id" component={SingleArt} />
+                <Route exact path="/profile/:username?" component={Profile} />
+                <Route exact path="/artform" component={ArtForm} />
+                <Route component={NoMatch} />
+              </Switch>
+            </div>
           <Footer />
         </div>
       </Router>

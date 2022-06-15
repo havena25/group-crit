@@ -16,21 +16,18 @@ const Home = () => {
   return (
 
     <main className="main_wrapper">
-      {loggedIn && (
           <div>
-            <ArtForm/>
+            
           </div>
-        )}
 
-    <main>
-      <div>
-        <CritiqueForm />
-        <div>
-
+          <div>
           {loading ? <div>Loading...</div> : <ArtList artworks={artworks} />}
+          <CritiqueForm />
+          )}
         </div>
       </div>
     </main>
   );
 };
+
 export default Home;

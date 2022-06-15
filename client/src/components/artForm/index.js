@@ -56,9 +56,9 @@ const ArtForm = () => {
                         name="artStatus"
                         id="artStatus"
                         onChange={handleChange}>
-                            <option selected value="unsolved">WIP</option>
-                            <option value="solved">Complete</option>
-                            <option value="solved">In Theory</option>
+                            <option selected value="WIP">WIP</option>
+                            <option value="Complete">Complete</option>
+                            <option value="InTheory">In Theory</option>
                     </select>
                 </div>
                 <div>
