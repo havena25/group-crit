@@ -1,7 +1,10 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useQuery } from '@apollo/react-hooks';
-import { QUERY_ART } from '../utils/queries';
+import { useQuery } from "@apollo/react-hooks";
+import { QUERY_ART } from "../utils/queries";
+import CritiqueList from "../components/CritiqueList";
+import CritiqueForm from "../components/CommentForm";
+import Auth from "../utils/auth";
 
 const SingleArt = (props) => {
   const { id: artId } = useParams();
@@ -10,39 +13,52 @@ const SingleArt = (props) => {
     variables: { id: artId },
   });
 
-  const artworks = data?.art || {};
+  const art = data?.art || {};
 
   if (loading) {
     return <div>Loading...</div>;
   }
+  return (
+    <div>
+      <div class="m-2">
+        <h2 className="english-font text-center">{art.artTitle}</h2>
+        <div className="text-center">
+          <p>
+            art Start Date:{" "}
+            <span>
+              <strong>{art.arttartDate}</strong>
+            </span>
+          </p>
+          <p>
+            art Status:{" "}
+            <span>
+              <strong>{art.arttatus}</strong>
+            </span>
+          </p>
+          <p>
+            Added to Cold art Central on:{" "}
+            <span>
+              <strong>{art.createdAt}</strong>
+            </span>{" "}
+            by{" "}
+            <span>
+              <strong>{art.username}</strong>
+            </span>
+          </p>
+        </div>
 
-  return (
-    <div>
-      <div className="card mb-3">
-        <p className="card-header">
-          <span style={{ fontWeight: 700 }} className="text-light">
-          {artworks.username}
-          </span>{' '}
-          art exploring {artworks.createdAt}
-        </p>
-              <div className="card-body">
-                <p>{artworks.artText}</p>
-      </div>
-              </div>
-    </div>
-  )
-  },
-const SingleArt = (props) => {
-  return (
-    <div>
-      <div>
-        <p className="card-header">
-          <span>Username</span> critique on createdAt
-        </p>
-        <div className="card-body">
-          <p>Art Text</p>
+        <div>
+          <p></p>
+          <p>
+            <span>
+              <strong>The story so far:</strong>
+            </span>
+          </p>
+          <p className="px-3">{art.artDescription}</p>
         </div>
       </div>
+      {Auth.loggedIn() && <CritiqueForm artId={art._id} />}
+      {art.commentCount > 0 && <CritiqueList comments={art.comments} />}
     </div>
   );
 };
