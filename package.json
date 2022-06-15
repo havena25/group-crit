@@ -21,10 +21,13 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "cd server && npm start",
+    "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "npm init -y && npm install if-env && npm install -D concurrently && cd client && npm i && npm i apollo-boost graphql graphql-tag @apollo/react-hooks react-router-dom jwt-decode && cd ../server && npm i && npm i apollo-server-express jsonwebtoken",
+    "seed": "cd server && npm run seed",
+    "heroku-postbuild": "cd client && npm run build"
   },
   "eslintConfig": {
     "extends": [
