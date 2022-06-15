@@ -1,13 +1,32 @@
+import gql from "graphql-tag";
+
 export const QUERY_CRITIQUES = gql`
   query critiques($username: String) {
     critiques(username: $username) {
       _id
-      commentText
+      critiqueText
       createdAt
       username
     }
   }
 `;
+
+export const QUERY_ME = gql`
+  {
+    me {
+      _id
+      username
+      email
+      critiqueCount
+      critiques {
+        _id
+        critiqueText
+        createdAt
+      }
+    }
+  }
+`;
+
 export const QUERY_ARTWORKS = gql`
   {
     artworks {

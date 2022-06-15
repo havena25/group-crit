@@ -1,16 +1,16 @@
-const faker = require('faker');
+const faker = require("faker");
 
-const db = require('../config/connection');
-const { Art } = require('../models');
+const db = require("../config/connection");
+const { Art, User } = require("../models");
 
-db.once('open', async () => {
+db.once("open", async () => {
   await Art.deleteMany({});
   await User.deleteMany({});
 
   // create user data
   const userData = [];
 
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 50; i += 1) {
     const username = faker.internet.userName();
     const email = faker.internet.email(username);
     const password = faker.internet.password();
@@ -28,27 +28,62 @@ db.once('open', async () => {
     let friendId = userId;
 
     while (friendId === userId) {
-      const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
+      const randomUserIndex = Math.floor(
+        Math.random() * createdUsers.ops.length
+      );
       friendId = createdUsers.ops[randomUserIndex];
     }
 
     await User.updateOne({ _id: userId }, { $addToSet: { friends: friendId } });
   }
 
-  // art data
-  // const artData = [];
+  let createdArts = [];
+  for (let i = 0; i < 100; i += 1) {
+    const artTitle = faker.name.findName();
+    const artSummary = faker.lorem.words(Math.round(Math.random() * 20) + 1);
+    const artDescription = faker.lorem.words(
+      Math.round(Math.random() * 20) + 1
+    );
+    const artStartDate = faker.date.past();
+    const artStatus = "Unsolved";
 
-  // for (let i = 0; i < 5; i++) {
-  //   const artTitle = faker.name.findName();
-  //   const artDescription = faker.lorem.paragraphs();
-  //   const artStartDate = faker.date.past();
-  //   const artStatus = "WIP";
-  //   const artAuthor = faker.name.findName();
+    const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
+    const { username, _id: userId } = createdUsers.ops[randomUserIndex];
 
-  //   artData.push({ artTitle, artDescription, artStartDate, artStatus, artAuthor });
-  // }
-  // await Art.collection.insertMany(artData);
+    const createdArt = await Art.create({
+      artTitle,
+      artSummary,
+      artDescription,
+      artStartDate,
+      artStatus,
+      username,
+    });
 
-  console.log('all done!');
+    const updatedUser = await User.updateOne(
+      { _id: userId },
+      { $push: { arts: createdArt._id } }
+    );
+
+    createdArts.push(createdArt);
+  }
+
+  // create Critiques
+  for (let i = 0; i < 100; i += 1) {
+    const artText = faker.lorem.words(Math.round(Math.random() * 20) + 1);
+
+    const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
+    const { username } = createdUsers.ops[randomUserIndex];
+
+    const randomArtIndex = Math.floor(Math.random() * createdArts.length);
+    const { _id: artId } = createdArts[randomArtIndex];
+
+    await Art.updateOne(
+      { _id: artId },
+      { $push: { critiques: { artText, username } } },
+      { runValidators: true }
+    );
+  }
+
+  console.log("all done!");
   process.exit(0);
 });
