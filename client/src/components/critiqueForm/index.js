@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useMutation } from '@apollo/react-hooks';
+import { ADD_CRITIQUE } from '../../utils/mutations';
 
 const CritiqueForm = () => {
 
@@ -12,10 +14,18 @@ const CritiqueForm = () => {
     }
   };
 
-  const handleFormSubmit = async (event) => {
+  const handleFormSubmit = async event => {
     event.preventDefault();
-    setText("");
-    setCharacterCount(0);
+    try {
+      await addCritique({
+        variables: { critiqueText }
+      });
+
+      setText('');
+      setCharacterCount(0);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (

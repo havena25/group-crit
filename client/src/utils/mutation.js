@@ -29,3 +29,14 @@ mutation {
   }
 }
 `;
+
+export const ADD_CRITIQUE = gql`
+  mutation addCritique($critiqueText: String!) {
+    addCritique(critiqueText: $critiqueText) {
+      _id
+      critiqueText
+      createdAt
+      username
+    }
+  }
+`;
