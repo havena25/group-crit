@@ -11,21 +11,21 @@ export const QUERY_CRITIQUES = gql`
   }
 `;
 
-// export const QUERY_ME = gql`
-//   {
-//     me {
-//       _id
-//       username
-//       email
-//       critiqueCount
-//       critiques {
-//         _id
-//         critiqueText
-//         createdAt
-//       }
-//     }
-//   }
-// `;
+export const QUERY_ME = gql`
+  {
+    me {
+      _id
+      username
+      email
+      critiqueCount
+      critiques {
+        _id
+        critiqueText
+        createdAt
+      }
+    }
+  }
+`;
 
 export const QUERY_ARTWORKS = gql`
   {
