@@ -6,7 +6,7 @@ import Home from "./pages/home";
 import Login from "./pages/login";
 
 // component import
-import Nav from "./components/Nav";
+// import Nav from "./components/Nav";
 
 function App() {
   return (
