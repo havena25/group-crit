@@ -36,7 +36,6 @@ const ArtSchema = new Schema(
       default: Date.now,
       get: (timestamp) => dateFormat(timestamp),
     },
-    media: [mediaSchema],
     critiques: [critiqueSchema],
   },
   {

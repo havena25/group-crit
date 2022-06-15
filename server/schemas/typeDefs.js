@@ -32,6 +32,8 @@ const typeDefs = gql`
 //   type Query {
 //     artworks: [Art]
 //     user(username: String): User
+//   cases: [Case]
+//    case(_id: ID!): Case
 //   }
 //   type Mutation {
 //     login(email: String!, password: String!): Auth
