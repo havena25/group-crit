@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
-import { ADD_CRITIQUE } from "../../utils/mutations";
+import { ADD_CRITIQUE } from "../../utils/mutation";
 import { QUERY_CRITIQUES } from "../../utils/queries";
 
 const CritiqueForm = () => {

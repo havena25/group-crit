@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { useMutation } from "@apollo/react-hooks";
-import { LOGIN_USER } from "../utils/mutations";
+import { LOGIN_USER } from "../utils/mutation";
 import Auth from "../utils/auth";
 
 const Login = (props) => {

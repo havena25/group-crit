@@ -45,8 +45,18 @@ mutation {
 `;
 
 export const ADD_ART = gql`
-  mutation addArt($artTitle: String!, $artDescription: String!, $artStatus: String!, $artStartDate: String!) {
-    addArt(artTitle: $artTitle, artDescription: $artDescription, artStatus: $artStatus, artStartDate: $artStartDate) {
+  mutation addArt(
+    $artTitle: String!
+    $artDescription: String!
+    $artStatus: String!
+    $artStartDate: String!
+  ) {
+    addArt(
+      artTitle: $artTitle
+      artDescription: $artDescription
+      artStatus: $artStatus
+      artStartDate: $artStartDate
+    ) {
       _id
       artTitle
       artDescription
@@ -54,8 +64,8 @@ export const ADD_ART = gql`
       artStartDate
       createdAt
       username
-      commentCount
-      comments {
+      critiqueCount
+      critiques {
         _id
       }
     }

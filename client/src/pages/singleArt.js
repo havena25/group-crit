@@ -2,8 +2,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { QUERY_ART } from "../utils/queries";
-import CritiqueList from "../components/CritiqueList";
-import CritiqueForm from "../components/CommentForm";
+import CritiqueList from "../components/critiqueList.js";
+import CritiqueForm from "../components/critiqueForm";
 import Auth from "../utils/auth";
 
 const SingleArt = (props) => {
@@ -58,7 +58,7 @@ const SingleArt = (props) => {
         </div>
       </div>
       {Auth.loggedIn() && <CritiqueForm artId={art._id} />}
-      {art.commentCount > 0 && <CritiqueList comments={art.comments} />}
+      {art.critiqueCount > 0 && <CritiqueList critiques={art.critiques} />}
     </div>
   );
 };
