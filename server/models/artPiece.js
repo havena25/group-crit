@@ -27,7 +27,7 @@ const artSchema = new Schema(
       required: true,
       default: "WIP",
     },
-    username: {
+    artistName: {
       type: String,
       required: true,
     },
