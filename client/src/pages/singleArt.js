@@ -31,7 +31,7 @@ const SingleArt = (props) => {
               </div>
     </div>
   )
-
+  },
 const SingleArt = (props) => {
   return (
     <div>

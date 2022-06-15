@@ -1,27 +1,26 @@
 import React, { useState } from "react";
-import { useMutation } from '@apollo/react-hooks';
-import { ADD_CRITIQUE } from '../../utils/mutations';
+import { useMutation } from "@apollo/react-hooks";
+import { ADD_CRITIQUE } from "../../utils/mutations";
 
 const CritiqueForm = () => {
-
   const [critiqueText, setText] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
 
   const handleChange = (event) => {
-    if (event.target.value.length <= 500) {
+    if (event.target.value.length <= 100000) {
       setText(event.target.value);
       setCharacterCount(event.target.value.length);
     }
   };
 
-  const handleFormSubmit = async event => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
       await addCritique({
-        variables: { critiqueText }
+        variables: { critiqueText },
       });
 
-      setText('');
+      setText("");
       setCharacterCount(0);
     } catch (e) {
       console.error(e);
@@ -30,8 +29,8 @@ const CritiqueForm = () => {
 
   return (
     <div>
-      <p className={`m-0 ${characterCount === 500 ? "text-error" : ""}`}>
-        Character Count: {characterCount}/500
+      <p className={`m-0 ${characterCount === 100000 ? "text-error" : ""}`}>
+        Character Count: {characterCount}/100000
       </p>{" "}
       <form
         className="flex-row justify-center justify-space-between-md align-stretch"
