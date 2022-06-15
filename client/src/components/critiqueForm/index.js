@@ -1,32 +1,11 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
 import { ADD_CRITIQUE } from "../../utils/mutation";
-import { QUERY_CRITIQUES } from "../../utils/queries";
 
-const CritiqueForm = () => {
-  const [critiqueText, setText] = useState("");
+
+const CritiqueForm = ({ artId }) => {
+  const [critiqueText, setCritiqueText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
-
-  const [addCritique, { error }] = useMutation(ADD_CRITIQUE, {
-    update(cache, { data: { addCritique } }) {
-      try {
-        // could potentially not exist yet, so wrap in a try...catch
-        const { Critique } = cache.readQuery({ query: QUERY_CRITIQUES });
-        cache.writeQuery({
-          query: QUERY_CRITIQUES,
-          data: { Critique: [addCritique, ...Critique] },
-        });
-      } catch (e) {
-        console.error(e);
-      }
-
-      // const { me } = cache.readQuery({ query: QUERY_ME });
-      // cache.writeQuery({
-      //   query: QUERY_ME,
-      //   data: { me: { ...me, Critique: [...me.Critique, addCritique] } },
-      // });
-    },
-  });
 
   const handleChange = (event) => {
     if (event.target.value.length <= 100000) {
@@ -39,10 +18,10 @@ const CritiqueForm = () => {
     event.preventDefault();
     try {
       await addCritique({
-        variables: { critiqueText },
+        variables: { critiqueText, artId },
       });
 
-      setText("");
+      setCritiqueText("");
       setCharacterCount(0);
     } catch (e) {
       console.error(e);
