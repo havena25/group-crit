@@ -1,15 +1,26 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
 import { ADD_ART } from "../../utils/mutation";
+import { QUERY_ARTWORKS } from '../../utils/queries';
 
 const ArtForm = () => {
   const [formState, setFormState] = useState({
     artTitle: "",
     artDescription: "",
-    artStatus: "Unsolved",
+    artStatus: "WIP",
     artStartDate: "",
   });
   const [addArt, { error }] = useMutation(ADD_ART);
+  useMutation(ADD_ART, {
+    update(cache, { data: { addArt } }) {
+        const { artworks } = cache.readQuery({ query: QUERY_ARTWORKS });
+
+        cache.writeQuery({
+            query: QUERY_ARTWORKS,
+            data: { artworks: [addArt, ...artworks] }
+        });
+    }
+});
 
   // update state based on for input changes
   const handleChange = (event) => {

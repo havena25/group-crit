@@ -17,7 +17,7 @@ const Header = () => {
         <p>lorem</p>
         <div className="double-border"></div>
         <div className="d-flex flex-row justify-content-between">
-          <span className="english-font px-3 py-2">January 28th, 2021</span>
+          <span className="english-font px-3 py-2">lorem ipsum</span>
           <nav className="d-flex flex-row justify-content-end">
             {Auth.loggedIn() ? (
               <>
