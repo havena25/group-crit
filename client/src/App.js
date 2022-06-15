@@ -1,5 +1,5 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
 
 // page imports
 import Home from "./pages/home";
@@ -7,23 +7,14 @@ import Login from "./pages/login";
 
 // component import
 // import Nav from "./components/Nav";
+import Header from "./components/Header";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <main>
+        <Header />
+      </main>
     </div>
   );
 }
