@@ -1,25 +1,14 @@
 {
-  "name": "client",
-  "version": "0.1.0",
-  "private": true,
-  "proxy": "http://localhost:3001",
   "dependencies": {
-    "@apollo/react-hooks": "^4.0.0",
-    "@testing-library/jest-dom": "^5.11.9",
-    "@testing-library/react": "^11.2.3",
-    "@testing-library/user-event": "^12.6.2",
-    "@tinymce/tinymce-react": "^3.9.0",
-    "apollo-boost": "^0.4.9",
-    "express": "^4.18.1",
-    "graphql": "^15.5.0",
-    "graphql-tag": "^2.11.0",
+    "dotenv": "^8.2.0",
     "if-env": "^1.0.4",
-    "jwt-decode": "^3.1.2",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.1",
-    "web-vitals": "^0.2.4"
+    "mongoose": "^6.3.8"
+  },
+  "name": "proxy",
+  "version": "1.0.0",
+  "main": "server/server.js",
+  "devDependencies": {
+    "concurrently": "^5.3.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -30,39 +19,16 @@
     "seed": "cd server && npm run seed",
     "heroku-postbuild": "cd client && npm run build"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "concurrently": "^7.2.2",
-    "webpack-pwa-manifest": "^4.3.0"
-  },
-  "description": "",
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/havena25/group-crit.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/havena25/group-crit/issues"
   },
-  "homepage": "https://github.com/havena25/group-crit#readme"
+  "homepage": "https://github.com/havena25/group-crit#readme",
+  "keywords": [],
+  "description": ""
 }
