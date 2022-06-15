@@ -1,15 +1,16 @@
 // imports
 // const { AuthenticationError } = require("apollo-server-express");
 // const { signToken } = require("../utils/auth");
-const { User, Art } = require('../models');
+const { User, Art } = require("../models");
 
 // resolvers
 const resolvers = {
   Query: {
-    artworks: async () => {
-      return Art.find().sort({ createdAt: -1 });
-    }
-  }
+    artworks: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return Case.find(params).sort({ createdAt: -1 });
+    },
+  },
 };
 // // resolvers - incomplete
 // const resolvers = {
