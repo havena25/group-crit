@@ -35,13 +35,25 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_POST = gql`
-mutation {
-  addPost($title: String!, $body: String!) {
-    _id
-    title
-    body
+  mutation Mutation(
+    $artTitle: String!
+    $artSummary: String!
+    $artDescription: String!
+    $artStartDate: String!
+    $artStatus: String!
+  ) {
+    addArt(
+      artTitle: $artTitle
+      artSummary: $artSummary
+      artDescription: $artDescription
+      artStartDate: $artStartDate
+      artStatus: $artStatus
+    ) {
+      _id
+      artTitle
+      artDescription
+    }
   }
-}
 `;
 
 export const ADD_ART = gql`
