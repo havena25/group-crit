@@ -10,16 +10,18 @@ const Home = () => {
   const artworks = data?.artworks || [];
   return (
     <main className="main_wrapper">
-      {loggedIn && (
           <div>
-            <ArtForm/>
+            
           </div>
-        )}
+
+          <div>
           {loading ? <div>Loading...</div> : <ArtList artworks={artworks} />}
           <CritiqueForm />
+          )}
         </div>
       </div>
     </main>
   );
 };
+
 export default Home;
