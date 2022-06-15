@@ -1,29 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const CritiqueList = ({ Crtitique, title }) => {
-  if (!Crtitique.length) {
-    return <h3>No Crtitique Yet</h3>;
+const CritiqueList = ({ critique, title }) => {
+  if (!critique.length) {
+    return <h3>No critique Yet</h3>;
   }
   return (
     <div>
-      <h3>{title}</h3>
-      {Crtitique &&
-        Crtitique.map((Crtitique) => (
-          <div key={Crtitique._id} className="">
-            <p className="">
-              <Link to={`/profile/${Crtitique.username}`}>
-                {Crtitique.username}
-              </Link>
-              {""}
-              Crtitique on {Crtitique.createdAt}
-            </p>
-            <div className="">
-              <p>{Crtitique.CrtitiqueText}</p>
-              <p className="">
-                Crtitique: {Crtitique.CrtitiqueCount} || Click to{" "}
-                {Crtitique.CrtitiqueCount ? "see" : "start"} the discussion!
+      <h3>critique</h3>
+      {critique &&
+        critique.map((critique) => (
+          <div key={critique._id} className="card m-3">
+            <div class="card-body">
+              <p className="card-title">
+                <strong>{critique.username}</strong> -{" "}
+                <span className="fs-6 text-muted">{critique.createdAt}</span>
               </p>
+              <p class="card-text">{critique.critiqueText}</p>
             </div>
           </div>
         ))}
