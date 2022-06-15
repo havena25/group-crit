@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import "./App.css";
 
@@ -29,14 +29,14 @@ function App() {
         <div>
           <Header />
           <div>
-            <Switch>
+            <Routes>
               <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/case/:id" component={SingleArt} />
 
               <Route component={NoMatch} />
-            </Switch>
+            </Routes>
           </div>
           <Footer />
         </div>
