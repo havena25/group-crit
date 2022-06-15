@@ -44,6 +44,24 @@ mutation {
 }
 `;
 
+export const ADD_ART = gql`
+  mutation addArt($artTitle: String!, $artDescription: String!, $artStatus: String!, $artStartDate: String!) {
+    addArt(artTitle: $artTitle, artDescription: $artDescription, artStatus: $artStatus, artStartDate: $artStartDate) {
+      _id
+      artTitle
+      artDescription
+      artStatus
+      artStartDate
+      createdAt
+      username
+      commentCount
+      comments {
+        _id
+      }
+    }
+  }
+`;
+
 export const ADD_CRITIQUE = gql`
   mutation addCritique($critiqueText: String!) {
     addCritique(critiqueText: $critiqueText) {
