@@ -8,9 +8,9 @@ export const QUERY_CRITIQUES = gql`
     }
   }
 `;
-export const QUERY_PIECES = gql`
+export const QUERY_ARTWORKS = gql`
   {
-    pieces {
+    artworks {
       _id
       name
       description
@@ -21,11 +21,11 @@ export const QUERY_PIECES = gql`
   }
 `;
 
-export const QUERY_PIECE = gql`
-  query piece($id: ID!) {
-    piece(_id: $id) {
+export const QUERY_ART = gql`
+  query art($id: ID!) {
+    art(_id: $id) {
       _id
-      pieceText
+      artText
       createdAt
       username
       critiqueCount
