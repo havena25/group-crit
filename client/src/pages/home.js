@@ -3,7 +3,9 @@ import React from "react";
 const Home = () => {
   return (
     <main>
-      <div>This is a test!</div>
+      <div>
+        <div>{/* PRINT ART LIST */}</div>
+      </div>
     </main>
   );
 };
