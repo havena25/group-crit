@@ -12,30 +12,28 @@ const Header = () => {
     <header>
       <div>
         <Link to="/" className="text-decoration-none text-body">
-          <h1>Group-crit</h1>
+          <h1>Art Work</h1>
         </Link>
-        <p>lorem</p>
+        <p>Art Work</p>
         <div className="double-border"></div>
         <div className="d-flex flex-row justify-content-between">
-          <span className="english-font px-3 py-2">lorem ipsum</span>
+          <span className="english-font px-3 py-2">Art Work</span>
           <nav className="d-flex flex-row justify-content-end">
             {Auth.loggedIn() ? (
               <>
-                {/* <Link to="/profile">Me</Link> */}
-                <a
-                  href="/"
-                  className="px-3 py-2 text-uppercase"
-                  onClick={logout}
-                >
+                <Link className="btn btn-lg btn-info m-2" to="/">
+                  {Auth.getProfile().data.username}'s profile
+                </Link>
+                <button className="btn btn-lg btn-light m-2" onClick={logout}>
                   Logout
-                </a>
+                </button>
               </>
             ) : (
               <>
-                <Link to="./login" className="px-3 py-2 text-uppercase">
+                <Link className="btn btn-lg btn-info m-2" to="/login">
                   Login
                 </Link>
-                <Link to="./login" className="px-3 py-2 text-uppercase">
+                <Link className="btn btn-lg btn-light m-2" to="/signup"
                   Signup
                 </Link>
               </>

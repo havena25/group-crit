@@ -1,5 +1,6 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose"); // import mongoose
 
+// create connection to database
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/group-crit", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -7,19 +8,5 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/group-crit", {
   useFindAndModify: false,
 });
 
-module.exports = async function connection() {
-  try {
-      const connectionParams = {
-          useNewUrlParser: true,
-          useCreateIndex: true,
-          useUnifiedTopology: true,
-      };
-      await mongoose.connect(process.env.DB, connectionParams);
-      console.log("connected to database");
-  } catch (error) {
-      console.log(error);
-      console.log("could not connect to database");
-  }
-};
-
+// export connection
 module.exports = mongoose.connection;

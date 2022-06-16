@@ -39,4 +39,6 @@ const mediaSchema = new Schema(
   }
 );
 
+const Media = model("critique", mediaSchema);
+
 module.exports = mediaSchema;
