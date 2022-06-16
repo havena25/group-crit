@@ -32,10 +32,10 @@ const Header = () => {
               </>
             ) : (
               <>
-                <Link to="/login" className="px-3 py-2 text-uppercase">
+                <Link to="./login" className="px-3 py-2 text-uppercase">
                   Login
                 </Link>
-                <Link to="/signup" className="px-3 py-2 text-uppercase">
+                <Link to="./login" className="px-3 py-2 text-uppercase">
                   Signup
                 </Link>
               </>
