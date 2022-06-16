@@ -19,12 +19,12 @@ const resolvers = {
       throw new AuthenticationError("Not logged in");
     },
     // get all art
-    art: async (parent, { username }) => {
+    artCollection: async (parent, { username }) => {
       const params = username ? { username } : {};
       return Art.find(params).sort({ createdAt: -1 });
     },
     // get one art by ID
-    art: async (parent, { _id }) => {
+    artPiece: async (parent, { _id }) => {
       return Art.findOne({ _id });
     },
     // get all users

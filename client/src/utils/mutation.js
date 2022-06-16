@@ -35,18 +35,40 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_POST = gql`
-mutation {
-  addPost($title: String!, $body: String!) {
-    _id
-    title
-    body
+  mutation Mutation(
+    $artTitle: String!
+    $artSummary: String!
+    $artDescription: String!
+    $artStartDate: String!
+    $artStatus: String!
+  ) {
+    addArt(
+      artTitle: $artTitle
+      artSummary: $artSummary
+      artDescription: $artDescription
+      artStartDate: $artStartDate
+      artStatus: $artStatus
+    ) {
+      _id
+      artTitle
+      artDescription
+    }
   }
-}
 `;
 
 export const ADD_ART = gql`
-  mutation addArt($artTitle: String!, $artDescription: String!, $artStatus: String!, $artStartDate: String!) {
-    addArt(artTitle: $artTitle, artDescription: $artDescription, artStatus: $artStatus, artStartDate: $artStartDate) {
+  mutation addArt(
+    $artTitle: String!
+    $artDescription: String!
+    $artStatus: String!
+    $artStartDate: String!
+  ) {
+    addArt(
+      artTitle: $artTitle
+      artDescription: $artDescription
+      artStatus: $artStatus
+      artStartDate: $artStartDate
+    ) {
       _id
       artTitle
       artDescription
@@ -54,8 +76,8 @@ export const ADD_ART = gql`
       artStartDate
       createdAt
       username
-      commentCount
-      comments {
+      critiqueCount
+      critiques {
         _id
       }
     }

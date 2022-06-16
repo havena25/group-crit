@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import { gql } from "@apollo/client";
 
 export const QUERY_ARTWORKS = gql`
   query art($username: String) {
@@ -79,7 +79,7 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_ME = gql`
-  {
+  query Query {
     me {
       _id
       username
@@ -94,10 +94,10 @@ export const QUERY_ME = gql`
         createdAt
         critiqueCount
         critiques {
-          _id
+          username
           createdAt
           critiqueText
-          username
+          _id
         }
       }
       friends {
@@ -109,7 +109,7 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_ME_BASIC = gql`
-  {
+  query Query {
     me {
       _id
       username

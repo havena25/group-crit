@@ -3,11 +3,11 @@ const path = require("path"); // import path (to access file and directory paths
 const { authMiddleware } = require("./utils/auth");
 
 // apollo Server
-const { ApolloServer } = require('apollo-server-express');
+const { ApolloServer } = require("apollo-server-express");
 
 // typeDefs and resolvers
-const { typeDefs, resolvers } = require('./schemas');
-const db = require('./config/connection');
+const { typeDefs, resolvers } = require("./schemas");
+const db = require("./config/connection");
 
 const app = express();
 
@@ -17,8 +17,8 @@ const PORT = process.env.PORT || 3001;
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers
-}); 
+  resolvers,
+});
 
 // integrate the Apollo server with express application as middleware
 server.applyMiddleware({ app });

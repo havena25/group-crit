@@ -18,7 +18,7 @@ import NoMatch from "./pages/noMatch";
 import SingleArt from "./pages/singleArt";
 import Signup from "./pages/signup";
 import Profile from "./pages/Profile";
-import ArtForm from './pages/artForm';
+import ArtForm from "./pages/artForm";
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -39,17 +39,17 @@ function App() {
       <Router>
         <div>
           <Header />
-            <div>
-              <Switch>
-                <Route exact path="/" component={Home} />
-                <Route exact path="/login" component={Login} />
-                <Route exact path="/signup" component={Signup} />
-                <Route exact path="/art/:id" component={SingleArt} />
-                <Route exact path="/profile/:username?" component={Profile} />
-                <Route exact path="/artform" component={ArtForm} />
-                <Route component={NoMatch} />
-              </Switch>
-            </div>
+          <div>
+            <Routes>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={Signup} />
+              <Route exact path="/art/:id" component={SingleArt} />
+              <Route exact path="/profile/:username?" component={Profile} />
+              <Route exact path="/artform" component={ArtForm} />
+              <Route component={NoMatch} />
+            </Routes>
+          </div>
           <Footer />
         </div>
       </Router>

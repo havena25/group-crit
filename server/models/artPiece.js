@@ -36,7 +36,12 @@ const ArtSchema = new Schema(
       default: Date.now,
       get: (timestamp) => dateFormat(timestamp),
     },
-    critiques: [critiqueSchema],
+    critiques: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "critique",
+      },
+    ],
   },
   {
     toJSON: {
@@ -45,7 +50,7 @@ const ArtSchema = new Schema(
   }
 );
 
-artSchema.virtual("critiqueCount").get(function () {
+ArtSchema.virtual("critiqueCount").get(function () {
   return this.critique.length;
 });
 

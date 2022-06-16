@@ -15,7 +15,7 @@ const typeDefs = gql`
     createdAt: String
     username: String
     critiqueCount: Int
-    critiques: [critique]
+    critiques: [Critique]
   }
   type Critique {
     _id: ID
@@ -39,8 +39,8 @@ const typeDefs = gql`
     me: User
     users: [User]
     user(username: String!): User
-    art(username: String): [Art]
-    art(_id: ID!): art
+    artCollection(username: String): [Art]
+    artPiece(_id: ID!): Art
   }
   type Mutation {
     login(email: String!, password: String!): Auth
@@ -51,8 +51,8 @@ const typeDefs = gql`
       artDescription: String!
       artStartDate: String!
       artStatus: String!
-    ): art
-    addCritique(artId: ID!, critiqueText: String!): art
+    ): Art
+    addCritique(artId: ID!, critiqueText: String!): Art
     addFriend(friendId: ID!): User
   }
 `;

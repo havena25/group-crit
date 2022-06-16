@@ -2,64 +2,40 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { QUERY_ART } from "../utils/queries";
-import CritiqueList from "../components/CritiqueList";
-import CritiqueForm from "../components/CommentForm";
+import CritiqueList from "../components/critiqueList.js";
+import CritiqueForm from "../components/critiqueForm";
 import Auth from "../utils/auth";
 
 const SingleArt = (props) => {
   const { id: artId } = useParams();
-
   const { loading, data } = useQuery(QUERY_ART, {
     variables: { id: artId },
   });
-
-  const art = data?.art || {};
-
+  const artwork = data?.art || {};
   if (loading) {
     return <div>Loading...</div>;
   }
   return (
-    <div>
-      <div class="m-2">
-        <h2 className="english-font text-center">{art.artTitle}</h2>
-        <div className="text-center">
-          <p>
-            art Start Date:{" "}
-            <span>
-              <strong>{art.arttartDate}</strong>
-            </span>
-          </p>
-          <p>
-            art Status:{" "}
-            <span>
-              <strong>{art.arttatus}</strong>
-            </span>
-          </p>
-          <p>
-            Added to Cold art Central on:{" "}
-            <span>
-              <strong>{art.createdAt}</strong>
-            </span>{" "}
-            by{" "}
-            <span>
-              <strong>{art.username}</strong>
-            </span>
-          </p>
-        </div>
+<div>
 
-        <div>
-          <p></p>
-          <p>
-            <span>
-              <strong>The story so far:</strong>
-            </span>
-          </p>
-          <p className="px-3">{art.artDescription}</p>
-        </div>
-      </div>
-      {Auth.loggedIn() && <CritiqueForm artId={art._id} />}
-      {art.commentCount > 0 && <CritiqueList comments={art.comments} />}
+  <div className="card mb-3">
+    <p className="card-header">
+      <span style={{ fontWeight: 700 }} className="text-light">
+        {artwork.username}
+      </span>{' '}
+        {artwork.createdAt}
+    </p>
+    <div className="card-body">
+      <p>Artwork Title: {artwork.artTitle}</p>
+      <p>Artwork Description: {artwork.artDescription}</p>
+      <p>Artwork Status: {artwork.artStatus}</p>
+      <p>Artwork Start Date: {artwork.artStartDate}</p>
     </div>
+  </div>
+
+  {artwork.critiqueCount > 0 && <CritiqueList critiques={artwork.critique} />}
+  {Auth.loggedIn() && <CritiqueForm artId={artwork._id} />}
+</div>
   );
 };
 
