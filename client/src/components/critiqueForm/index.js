@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
 import { ADD_CRITIQUE } from "../../utils/mutation";
 
-
 const CritiqueForm = ({ artId }) => {
-  const [critiqueText, setCritiqueText] = useState('');
+  const [critiqueText, setCritiqueText] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
+  const [addCritique, { error }] = useMutation(ADD_CRITIQUE);
 
   const handleChange = (event) => {
     if (event.target.value.length <= 100000) {
-      setText(event.target.value);
+      setCritiqueText(event.target.value);
       setCharacterCount(event.target.value.length);
     }
   };
