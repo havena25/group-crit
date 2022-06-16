@@ -1,6 +1,4 @@
 const { Schema, model } = require("mongoose");
-const critiqueSchema = require("./critque");
-const mediaSchema = require("./Media");
 const dateFormat = require("../utils/dateFormat");
 
 const ArtSchema = new Schema(
@@ -11,6 +9,12 @@ const ArtSchema = new Schema(
       minlength: 1,
       maxlength: 120,
       default: "Untitled",
+    },
+    artSummary: {
+      type: String,
+      required: "This art should have a summary!",
+      minlength: 1,
+      maxlength: 500,
     },
     artDescription: {
       type: String,
