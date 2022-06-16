@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
 import { useMutation } from "@apollo/react-hooks";
 import { ADD_USER } from "../utils/mutation";
-import { Link } from "react-router-dom";
 
 import Auth from "../utils/auth";
 
@@ -24,7 +25,7 @@ const Signup = () => {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+    console.log(formState);
     // use try/catch instead of promises to handle errors
     try {
       // execute addUser mutation and pass in variable data from form
