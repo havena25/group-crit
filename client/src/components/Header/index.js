@@ -20,8 +20,8 @@ const Header = () => {
           {/* <span className="english-font px-3 py-2">Come join the discussion!</span> */}
           <nav className="d-flex flex-row justify-content-end">
             {Auth.loggedIn() ? (
-              <>
-                <Link className="btn btn-lg btn-info m-2" to="/">
+              <>btn
+                <Link className=" btn-lg btn-info m-2" to="/">
                   {Auth.getProfile().data.username}'s profile
                 </Link>
                 <button className="btn btn-lg btn-light m-2" onClick={logout}>
