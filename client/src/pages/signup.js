@@ -39,10 +39,10 @@ const Signup = () => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
+    <main className="flex-row justify-center mb-4 mainCard">
       <div className="col-12 col-md-6">
-        <div className="card">
-          <h4 className="card-header">Sign Up</h4>
+        <div className="card signupCard">
+          <h4 className="card-header signupHeader">Sign Up</h4>
           <div className="card-body">
             {data ? (
               <p>
@@ -78,7 +78,7 @@ const Signup = () => {
                   value={formState.password}
                   onChange={handleChange}
                 />
-                <button className="btn d-block w-100" type="submit">
+                <button className="btn btn-lg btn-light m-2" type="submit">
                   Submit
                 </button>
               </form>

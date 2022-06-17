@@ -12,12 +12,12 @@ const Header = () => {
     <header>
       <div>
         <Link to="/" className="text-decoration-none text-body">
-          <h1>Art Work</h1>
+          <h1 className="header-text">Group Crit</h1>
         </Link>
-        <p>Art Work</p>
+      
         <div className="double-border"></div>
         <div className="d-flex flex-row justify-content-between">
-          <span className="english-font px-3 py-2">Art Work</span>
+          {/* <span className="english-font px-3 py-2">Come join the discussion!</span> */}
           <nav className="d-flex flex-row justify-content-end">
             {Auth.loggedIn() ? (
               <>

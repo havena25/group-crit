@@ -12,6 +12,10 @@ html {
   /* 2 */
 }
 
+footer {
+  background: url(https://media.istockphoto.com/photos/artist-canvas-background-picture-id1016124480?b=1&k=20&m=1016124480&s=170667a&w=0&h=8FX04uVAUtWZXf9EtcYume7aJWns4siwnLGFCRdnL94=);
+}
+
 /* Sections
    ========================================================================== */
 /**
@@ -19,7 +23,7 @@ html {
  */
 body {
   margin: 0;
-  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/567707/paper_fibers.png)
+  background: url(https://media.istockphoto.com/photos/artist-canvas-background-picture-id1016124480?b=1&k=20&m=1016124480&s=170667a&w=0&h=8FX04uVAUtWZXf9EtcYume7aJWns4siwnLGFCRdnL94=)
     repeat;
 }
 
@@ -36,6 +40,7 @@ main {
  */
 h1 {
   font-size: 2em;
+  
   margin: 0.67em 0;
 }
 
@@ -363,6 +368,11 @@ body {
     "Segoe UI Symbol";
   font-size: 16px;
   color: #1a1a1a;
+}
+
+.header-text {
+  font-family: 'Rock Salt', cursive;
+  color:magenta;
 }
 
 h1,
@@ -1031,22 +1041,119 @@ a:hover {
   background-color: #ee8294;
 }
 
+
 .btn.btn-info {
-  background-color: #1bbc9b;
-  color: #ffffff;
+  background-color: #3DD1E7;
+  border: 0 solid #E5E7EB;
+  box-sizing: border-box;
+  color: #000000;
+  display: flex;
+  font-family: 'Rock Salt', cursive;
+  font-size: 1rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1.75rem;
+  padding: .75rem 1.65rem;
+  position: relative;
+  text-align: center;
+  text-decoration: none #000000 solid;
+  text-decoration-thickness: auto;
+  max-width: 460px;
+  position: relative;
+  cursor: pointer;
+  transform: rotate(-2deg);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
+
+.btn.btn-info:focus {
+  outline: 0;
+}
+
+.btn.btn-info:after {
+  content: '';
+  position: absolute;
+  border: 1px solid #000000;
+  bottom: 4px;
+  left: 4px;
+  width: calc(100% - 1px);
+  height: calc(100% - 1px);
+}
+
+.btn.btn-info:hover:after {
+  bottom: 2px;
+  left: 2px;
+}
+
+@media (min-width: 768px) {
+  .btn.btn-info:hover:after  {
+    padding: .75rem 3rem;
+    font-size: 1.25rem;
+  }
+}
+
+
 
 .btn.btn-info:hover {
-  background-color: #31e1bd;
+  background-color: #71e2f3;
 }
 
+
 .btn.btn-light {
-  background-color: #d9e9e8;
-  color: #1a1a1a;
+  background-color: #d5f857;
+  border: 0 solid #E5E7EB;
+  box-sizing: border-box;
+  color: #000000;
+  display: flex;
+  font-family: 'Rock Salt', cursive;
+  font-size: 1rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1.75rem;
+  padding: .75rem 1.65rem;
+  position: relative;
+  text-align: center;
+  text-decoration: none #000000 solid;
+  text-decoration-thickness: auto;
+  max-width: 460px;
+  position: relative;
+  cursor: pointer;
+  transform: rotate(-2deg);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.btn.btn-light:focus {
+  outline: 0;
+}
+
+.btn.btn-light:after {
+  content: '';
+  position: absolute;
+  border: 1px solid #000000;
+  bottom: 4px;
+  left: 4px;
+  width: calc(100% - 1px);
+  height: calc(100% - 1px);
+}
+
+.btn.btn-light:hover:after {
+  bottom: 2px;
+  left: 2px;
+}
+
+@media (min-width: 768px) {
+  .btn.btn-light {
+    padding: .75rem 3rem;
+    font-size: 1.25rem;
+  }
 }
 
 .btn.btn-light:hover {
-  background-color: #84b8b4;
+  background-color: #c7f719
+  ;
 }
 
 .btn.btn-dark {
@@ -1707,4 +1814,34 @@ label form [type="radio"] {
   .align-content-center-xl {
     align-content: center;
   }
+}
+
+.loginHeader {
+  background: transparent !important;
+  color:#000000 !important;
+  font-family: 'Rock Salt', cursive;
+  box-shadow: rgba(240, 46, 170, 0.4) 0px 5px, rgba(240, 46, 170, 0.3) 0px 10px, rgba(240, 46, 170, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px, rgba(240, 46, 170, 0.05) 0px 25px;
+  text-align: center; 
+
+}
+
+.loginCard {
+  box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+}
+
+.signupHeader{
+  background: transparent !important;
+  color:#000000 !important;
+  font-family: 'Rock Salt', cursive;
+  box-shadow: rgba(149, 46, 240, 0.4) 0px 5px, rgba(149, 46, 240, 0.3) 0px 10px, rgba(88, 46, 240, 0.2) 0px 15px, rgba(130, 46, 240, 0.1) 0px 20px, rgba(208, 46, 240, 0.05) 0px 25px;
+  text-align: center; 
+
+}
+
+.signupCard{
+  box-shadow: rgba(149, 46, 240, 0.4) 5px 5px, rgba(149, 46, 240, 0.3) 10px 10px, rgba(88, 46, 240, 0.2) 15px 15px, rgba(130, 46, 240, 0.1) 20px 20px, rgba(208, 46, 240, 0.05) 25px 25px;
+}
+
+.mainCard {
+  padding-top: 100px;
 }
