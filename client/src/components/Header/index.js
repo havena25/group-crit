@@ -14,10 +14,9 @@ const Header = () => {
         <Link to="/" className="text-decoration-none text-body">
           <h1>Art Work</h1>
         </Link>
-        <p>Art Work</p>
         <div className="double-border"></div>
         <div className="d-flex flex-row justify-content-between">
-          <span className="english-font px-3 py-2">Art Work</span>
+          <span className="english-font px-3 py-2"></span>
           <nav className="d-flex flex-row justify-content-end">
             {Auth.loggedIn() ? (
               <>
