@@ -1,12 +1,31 @@
 const faker = require("faker");
+const artSeeds = require("./artSeeds.json");
 
+const userSeeds = require("./userSeeds.json");
 const db = require("../config/connection");
 const { Art, User } = require("../models");
 
 db.once("open", async () => {
-  await Art.deleteMany({});
-  await User.deleteMany({});
+  try {
+    await Art.deleteMany({});
+    await User.deleteMany({});
+    await User.create(userSeeds);
 
+    for (let i = 0; i < artSeeds.length; i++) {
+      const { _id, artArtist } = await Art.create(artSeeds[i]);
+      const user = await User.findOneAndUpdate(
+        { username: artArtist },
+        {
+          $addToSet: {
+            artCollection: _id,
+          },
+        }
+      );
+    }
+  } catch (err) {
+    console.error(err);
+    process.exit(1);
+  }
   // create user data
   const userData = [];
 
@@ -68,21 +87,21 @@ db.once("open", async () => {
   }
 
   // create Critiques
-  for (let i = 0; i < 100; i += 1) {
-    const artText = faker.lorem.words(Math.round(Math.random() * 20) + 1);
+  // for (let i = 0; i < 100; i += 1) {
+  //   const artText = faker.lorem.words(Math.round(Math.random() * 20) + 1);
 
-    const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
-    const { username } = createdUsers.ops[randomUserIndex];
+  //   const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
+  //   const { username } = createdUsers.ops[randomUserIndex];
 
-    const randomArtIndex = Math.floor(Math.random() * createdArts.length);
-    const { _id: artId } = createdArts[randomArtIndex];
+  //   const randomArtIndex = Math.floor(Math.random() * createdArts.length);
+  //   const { _id: artId } = createdArts[randomArtIndex];
 
-    await Art.updateOne(
-      { _id: artId },
-      { $push: { critiques: { artText, username } } },
-      { runValidators: true }
-    );
-  }
+  //   await Art.updateOne(
+  //     { _id: artId },
+  //     { $push: { critiques: { artText, username } } },
+  //     { runValidators: true }
+  //   );
+  // }
 
   console.log("all done!");
   process.exit(0);
