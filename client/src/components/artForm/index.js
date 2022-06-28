@@ -51,8 +51,9 @@ const ArtForm = () => {
     }
   };
   return (
+    <div className="artForm">
     <div className="py-3">
-      <h3>Enter information about your art:</h3>
+      <h3 className="artFormheader">Enter information about your art:</h3>
       <form onSubmit={handleFormSubmit}>
         <div class="form-floating mb-3">
           <input
@@ -118,6 +119,7 @@ const ArtForm = () => {
           </button>
         </div>
       </form>
+    </div>
     </div>
   );
 };
